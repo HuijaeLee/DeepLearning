@@ -54,13 +54,13 @@ all_train_videos = []
 for video in sorted(os.listdir(train_assault_path)):
     video_path = os.path.join(train_assault_path, video)
     frames = sorted(os.listdir(video_path))[:400]
-    images = [load_image(os.path.join(video_path, frame)) for frame in frames]
+    images = [cv2.imread(os.path.join(video_path, frame)).astype("float32") / 255.0 for frame in frames]
     all_train_videos.append(np.array(images))
 # Training Burglary case
 for video in sorted(os.listdir(train_burglary_path)):
     video_path = os.path.join(train_burglary_path, video)
     frames = sorted(os.listdir(video_path))[:400]
-    images = [load_image(os.path.join(video_path, frame)) for frame in frames]
+    images = [cv2.imread(os.path.join(video_path, frame)).astype("float32") / 255.0 for frame in frames]
     all_train_videos.append(np.array(images))
 
 # Save the dataset
@@ -73,13 +73,13 @@ all_test_videos = []
 for video in sorted(os.listdir(test_assault_path)):
     video_path = os.path.join(test_assault_path, video)
     frames = sorted(os.listdir(video_path))[:400]
-    images = [load_image(os.path.join(video_path, frame)) for frame in frames]
+    images = [cv2.imread(os.path.join(video_path, frame)).astype("float32") / 255.0 for frame in frames]
     all_test_videos.append(np.array(images))
 # Test burglary case
 for video in sorted(os.listdir(test_burglary_path)):
     video_path = os.path.join(test_burglary_path, video)
     frames = sorted(os.listdir(video_path))[:400]
-    images = [load_image(os.path.join(video_path, frame)) for frame in frames]
+    images = [cv2.imread(os.path.join(video_path, frame)).astype("float32") / 255.0 for frame in frames]
     all_test_videos.append(np.array(images))
 
 # Save the dataset
